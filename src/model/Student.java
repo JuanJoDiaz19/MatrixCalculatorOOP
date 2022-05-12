@@ -6,6 +6,7 @@ public class Student{
     private int age;
     private double average;
     private String studentId;
+    private NoteSubject[][] notes;
 
     public String getName() {
         return this.name;
@@ -45,6 +46,12 @@ public class Student{
         this.age = age;
         this.average = average;
         this.studentId = studentId;
+        notes = new NoteSubject[3][3];
+    }
+
+    public boolean addNoteInCoordinate(int coordinateRows, int coordinateColumns, NoteSubject note) {
+        notes[coordinateRows][coordinateColumns] = note;
+        return true;
     }
     
 

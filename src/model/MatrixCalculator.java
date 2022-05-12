@@ -158,27 +158,49 @@ public class MatrixCalculator {
 	}
 	public String organizeStudents(){
 		String out="";
+		boolean flag = true;
 		String[][] summary = new String[100][5];
 		summary[0][0]="Student num";
 		summary[0][1]=" Name ";
 		summary[0][2]=" Age ";
 		summary[0][3]=" Average ";
 		summary[0][4]=" Student Id ";
-
 		for (int i = 1; i < studentsInfo.size()+1; i++) {
 			summary[i][0] = "Student " + (i);
 			summary[i][1] = studentsInfo.get(i-1).getName();
-			summary[i][2] = "" + studentsInfo.get(i-1).getage() ;
+			summary[i][2] = "" + studentsInfo.get(i-1).getage() ;	
 			summary[i][3] = "" + studentsInfo.get(i-1).getaverage() ;
-			summary[i][4] = studentsInfo.get(i-1).getStudentId(); 
+			summary[i][4] = studentsInfo.get(i-1).getStudentId();
 		}
-		for (int i = 0; i < summary.length; i++) {
+		for (int i = 0; i < summary.length && flag; i++) {
 			for (int j = 0; j < summary[0].length; j++) {
-				out += summary[i][j] + "|";
+				if (summary[i][j] != null) {
+					out += summary[i][j] + "|";
+				} else {
+					flag = false;
+				}
+				
 			}
 			out +="\n";
 		}
 		return out;
+	}
+
+	public boolean registerNoteInStudent(String idStudent, int coordinateRows, int coordinateColumns, String nameNote, double valueNote, String nameSubject, int creditSubject ) {
+		NoteSubject noteSubject = new NoteSubject(nameNote, valueNote, nameSubject, creditSubject);
+		findStudent(idStudent).addNoteInCoordinate(coordinateRows, coordinateColumns, noteSubject);
+		return true;
+
+	}
+
+	public Student findStudent(String id) {
+		Student student = null;
+		for (int i = 0; i < studentsInfo.size(); i++) {
+			if (studentsInfo.get(i).getStudentId().equals(id)) {
+				student = studentsInfo.get(i);
+			}
+		}
+		return student;
 	}
 	
 
