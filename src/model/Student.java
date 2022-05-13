@@ -7,6 +7,22 @@ public class Student{
     private String studentId;
     private NoteSubject[][] notes;
 
+    public int getAge() {
+        return this.age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public NoteSubject[][] getNotes() {
+        return this.notes;
+    }
+
+    public void setNotes(NoteSubject[][] notes) {
+        this.notes = notes;
+    }
+
     public String getName() {
         return this.name;
     }
