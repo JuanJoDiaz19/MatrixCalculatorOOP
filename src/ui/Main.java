@@ -108,13 +108,10 @@ public class Main {
 		int age= sc.nextInt();
 		sc.nextLine();
 
-		System.out.println("Enter the student's average");
-		double average= sc.nextDouble();
-		sc.nextLine();
 
 		System.out.println("Enter the student's id");
 		String id=sc.nextLine();
-		System.out.println(calculator.addStudent(name, age, average, id));
+		System.out.println(calculator.addStudent(name, age, id));
 	}
 
 	private void createMatrix() {

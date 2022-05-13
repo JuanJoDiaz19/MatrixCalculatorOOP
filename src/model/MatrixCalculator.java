@@ -106,13 +106,13 @@ public class MatrixCalculator {
 	public void addString (String[][] newStringMatrix) {
 		stringMatrices.add(newStringMatrix);
 	}
-	public String addStudent(String name, int age, double average, String studentID){
+	public String addStudent(String name, int age, String studentID){
         String out="";
 		boolean wasAdded=true;
 		for(int i =0; i<students.length; i++){
             for(int j =0; j<students[0].length && wasAdded; j++){
                 if(students[i][j]==null){
-                    Student student=new Student(name, age, average, studentID);
+                    Student student=new Student(name, age, studentID);
 					students[i][j] = student;
 					wasAdded=false;
 					studentsInfo.add(student);

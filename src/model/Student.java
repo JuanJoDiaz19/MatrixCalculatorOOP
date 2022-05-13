@@ -41,10 +41,9 @@ public class Student{
     }
 
 
-    public Student(String name, int age, double average, String studentId) {
+    public Student(String name, int age, String studentId) {
         this.name = name;
         this.age = age;
-        this.average = average;
         this.studentId = studentId;
         notes = new NoteSubject[3][3];
     }
