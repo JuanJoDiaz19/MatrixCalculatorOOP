@@ -16,6 +16,18 @@ public class MatrixCalculator {
 		studentsInfo= new ArrayList<Student>();
 		this.students=new Student[10][10];
 	}
+	public MatrixCalculator(ArrayList<Student> students) {
+
+        numericMatrices = new ArrayList<int[][]>();
+        stringMatrices = new ArrayList<String[][]>();
+        this.students =new Student[10][10];
+        studentsInfo= new ArrayList<Student>();
+        for (int i = 0; i < students.size(); i++) {
+            addStudent(students.get(i));
+        }
+
+    }
+
 	
 	public String showMatrices() {
 		String out="";
@@ -122,6 +134,20 @@ public class MatrixCalculator {
 		out="Was registered";
 		return out;
     }
+	public boolean addStudent(Student student) {
+		String out="";
+		boolean wasAdded=true;
+		for(int i =0; i<students.length; i++){
+            for(int j =0; j<students[0].length && wasAdded; j++){
+                if(students[i][j]==null){
+					students[i][j] = student;
+					wasAdded=false;
+					studentsInfo.add(student);
+                }
+            }
+        }
+		return true;
+	}
 	public String lookUpStudent(String id){
 		boolean wasFound=false;
 		String out="";
@@ -130,7 +156,6 @@ public class MatrixCalculator {
 				if(students[rowNum][columnNum]!=null && students[rowNum][columnNum].getStudentId().equals(id) & wasFound==false){
 					out="Student was found";
 					wasFound=true;
-					System.out.println();
 				}
 			}
 		}
@@ -169,7 +194,7 @@ public class MatrixCalculator {
 			summary[i][0] = "Student " + (i);
 			summary[i][1] = studentsInfo.get(i-1).getName();
 			summary[i][2] = "" + studentsInfo.get(i-1).getage() ;	
-			summary[i][3] = "" + studentsInfo.get(i-1).getaverage() ;
+			summary[i][3] = "" + studentsInfo.get(i-1).calculateAverage() ;
 			summary[i][4] = studentsInfo.get(i-1).getStudentId();
 		}
 		for (int i = 0; i < summary.length && flag; i++) {
@@ -182,6 +207,15 @@ public class MatrixCalculator {
 				
 			}
 			out +="\n";
+		}
+		out += "\n\n"; 
+		for (int i = 0; i < studentsInfo.size(); i++) {
+			if (studentsInfo.get(i).calculateAverage() > 3.5){
+				out += "The student " + studentsInfo.get(i).getName() + " has passed the semester ;)\n";
+			}else {
+				out += "The student " + studentsInfo.get(i).getName() + " failed the semester ;(\n";
+			};
+			
 		}
 		return out;
 	}
@@ -202,6 +236,8 @@ public class MatrixCalculator {
 		}
 		return student;
 	}
+
+
 	
 
 }

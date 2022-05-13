@@ -11,7 +11,8 @@ public class Main {
 	
 	public Main(){
 		sc= new Scanner(System.in);
-		calculator = new MatrixCalculator();
+		calculator = new MatrixCalculator(InitModel.initModel());
+		
 	}
 
 	public static void main(String[] args) {

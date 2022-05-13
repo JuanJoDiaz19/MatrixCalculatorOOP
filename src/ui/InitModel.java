@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import model.*;
 
 public class InitModel {
-    public ArrayList<Student> initModel() {
+    public static ArrayList<Student> initModel() {
         ArrayList<Student> students = new ArrayList<Student>();
 
         //Notes from the first student:
@@ -56,7 +56,7 @@ public class InitModel {
 
         //Notes from the third student:
         
-        students.add(new Student("Samuel Hernandez", 23, "A125"));
+        students.add(new Student("Samuel Gutierrez", 23, "A125"));
         
         NoteSubject student2Note00 = new NoteSubject("Quimica", 3, "Parcial 1", 3);
         NoteSubject student2Note01 = new NoteSubject("Quimica", 2, "Parcial 2", 3);
