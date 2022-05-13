@@ -182,20 +182,20 @@ public class MatrixCalculator {
 //Por grupo presenta el diagrama de la extension, estrategia de los problemas (general) y una demostracion
 	}
 	public String organizeStudents(){
-		String out="";
+		String out="\n\n";
 		boolean flag = true;
 		String[][] summary = new String[100][5];
-		summary[0][0]="Student num";
-		summary[0][1]=" Name ";
+		summary[0][0]="Student #";
+		summary[0][1]="   Name  ";
 		summary[0][2]=" Age ";
 		summary[0][3]=" Average ";
 		summary[0][4]=" Student Id ";
 		for (int i = 1; i < studentsInfo.size()+1; i++) {
 			summary[i][0] = "Student " + (i);
 			summary[i][1] = studentsInfo.get(i-1).getName();
-			summary[i][2] = "" + studentsInfo.get(i-1).getage() ;	
-			summary[i][3] = "" + studentsInfo.get(i-1).calculateAverage() ;
-			summary[i][4] = studentsInfo.get(i-1).getStudentId();
+			summary[i][2] = "  " + studentsInfo.get(i-1).getage() +" " ;	
+			summary[i][3] = "   " + studentsInfo.get(i-1).calculateAverage() +"  ";
+			summary[i][4] = "  "+studentsInfo.get(i-1).getStudentId()+ "      ";
 		}
 		for (int i = 0; i < summary.length && flag; i++) {
 			for (int j = 0; j < summary[0].length; j++) {
@@ -208,7 +208,7 @@ public class MatrixCalculator {
 			}
 			out +="\n";
 		}
-		out += "\n\n"; 
+		out += "\n"; 
 		for (int i = 0; i < studentsInfo.size(); i++) {
 			if (studentsInfo.get(i).calculateAverage() > 3.5){
 				out += "The student " + studentsInfo.get(i).getName() + " has passed the semester ;)\n";
@@ -235,6 +235,16 @@ public class MatrixCalculator {
 			}
 		}
 		return student;
+	}
+
+	public String showNotesStudent(String idStudent) {
+		String out = "";
+		if (findStudent(idStudent) != null) {
+			out+= findStudent(idStudent).showNotes();
+		} else {
+			out += "There isn't any student with this id";
+		}
+		return out;
 	}
 
 

@@ -12,7 +12,6 @@ public class Main {
 	public Main(){
 		sc= new Scanner(System.in);
 		calculator = new MatrixCalculator(InitModel.initModel());
-		
 	}
 
 	public static void main(String[] args) {
@@ -45,6 +44,7 @@ public class Main {
 				"(7) Show all students info\n"+
 				"(8) Look up student\n"+ 
 				"(9) Register the notes of a student \n"+
+				"(10) Show notes from a student\n" +
 				"(0) To leave the application"
 				);
 		option= sc.nextInt();
@@ -75,24 +75,26 @@ public class Main {
 
 		case 5:
 			registerStudent();
-		break;	
+			break;	
 
 		case 6:
 			System.out.println("========================================================\nALL STUDENTS NAMES\n"+calculator.showAllStudentsNames()+"\n");
-		break;
+			break;
 
 		case 7:
 			System.out.println("========================================================\nALL STUDENTS INFO\n"+calculator.organizeStudents()+"\n");
-		break;
+			break;
 
 		case 8:
 			lookUpStudent();
-		break;
-		
-		case 9:
-			option8();
 			break;
 		
+		case 9:
+			option9();
+			break;
+		case 10:
+		    option10();
+			break;
 		default:
 			System.out.println("Error, wrong option");
 		
@@ -164,7 +166,7 @@ public class Main {
 		String id=sc.nextLine();
 		System.out.println(calculator.lookUpStudent(id));
 	}
-	public void option8() {
+	public void option9() {
 		System.out.println("Enter the id of the student: ");
 		String id = sc.nextLine();
 		if (calculator.findStudent(id)!=null) {
@@ -239,6 +241,12 @@ public class Main {
 			System.out.println("The student hasn't been found");
 		}
 		
+	}
+
+	public void option10() {
+		System.out.println("Enter the id of the student");
+		String id = sc.nextLine();
+		System.out.println(calculator.showNotesStudent(id));;
 	}
 
 }

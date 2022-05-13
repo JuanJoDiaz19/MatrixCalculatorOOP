@@ -60,7 +60,21 @@ public class Student{
         int sumAllCredits=notes[0][0].getCreditSubject()+notes[0][1].getCreditSubject()+notes[0][2].getCreditSubject();
 
         double totalAverage=((averageSubject1*notes[0][0].getCreditSubject())+(averageSubject2*notes[0][1].getCreditSubject())+(averageSubject3*notes[0][2].getCreditSubject()))/sumAllCredits;
-        return totalAverage;
+        return Math.round(totalAverage*100.0)/100.0;
+    }
+
+    public String showNotes() {
+        String out = "          |";
+        out+= notes[0][0].getNameSubject() +"  |" + notes[0][1].getNameSubject()+"  |" +notes[0][2].getNameSubject()+"  |\n";
+        
+        for (int i = 0; i < notes.length; i++) {
+            out+= notes[i][0].getNameNote() + " |";
+            for (int j = 0; j < notes.length; j++) {
+                out+= notes[i][j].getValueNote() +" |";
+            }
+            out += "\n";
+        }
+        return out;
     }
 
 }
